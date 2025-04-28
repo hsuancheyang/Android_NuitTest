@@ -1,7 +1,12 @@
 package com.example.myapplication
 
+import com.example.myapplication.umgrella.IWeather
+import com.example.myapplication.user.StubWeather
+import com.example.myapplication.umgrella.Umbrella
+import io.mockk.coEvery
 import org.junit.Assert
 import org.junit.Test
+import io.mockk.mockk as mockk
 
 class UmbrellaTest {
 //    @Test
@@ -27,6 +32,15 @@ class UmbrellaTest {
         stubWeather.fakeIsSunny = false
         val actual = umbrella.totalPrice(5,200, stubWeather)
         val expected = 1000
+        Assert.assertEquals(expected, actual)
+    }
+    @Test
+    fun totalPrice_mockk_sunny(){
+        val umbrella = Umbrella()
+        val weather = mockk<IWeather>()
+        coEvery { weather.isSunny() } returns true
+        val actual = umbrella.totalPrice(5,200, weather)
+        val expected = 900
         Assert.assertEquals(expected, actual)
     }
 

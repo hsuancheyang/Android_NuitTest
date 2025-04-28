@@ -1,4 +1,5 @@
-package com.example.myapplication
+package com.example.myapplication.umgrella
+
 
 class Umbrella {
     fun totalPrice(count: Int, price: Int, weather: IWeather): Int{
