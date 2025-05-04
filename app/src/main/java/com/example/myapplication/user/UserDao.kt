@@ -10,14 +10,19 @@ import androidx.room.Update
 interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(user: User)
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUsers(users: List<User>)
+
     @Update
     suspend fun update(user: User)
+
     @Query("SELECT * FROM users ORDER BY name ASC")
     fun getUsers(): List<User>
+
     @Query("SELECT * FROM users WHERE id = :userId")
-    fun getUserById(userId: Int): User
+    fun getUserById(userId: Int): User?
+
     @Query("DELETE FROM users")
     suspend fun deleteAll()
 }
