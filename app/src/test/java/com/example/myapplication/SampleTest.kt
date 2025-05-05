@@ -8,33 +8,35 @@ import org.junit.Test
 
 class SampleTest {
     @Before
-    fun setup(){
+    fun setup() {
         println("before")
     }
+
     @Test
-    fun test1(){
+    fun test1() {
         println("test1")
     }
+
     @After
-    fun after(){
+    fun after() {
         println("after")
     }
 
     @Test
-    fun test2(){
+    fun test2() {
         println("test2")
     }
 
-    companion object{
+    companion object {
         @JvmStatic
         @BeforeClass
-        fun beforeClass(){
+        fun beforeClass() {
             println("beforeClass")
         }
 
         @JvmStatic
         @AfterClass
-        fun afterClass(){
+        fun afterClass() {
             println("afterClass")
         }
     }

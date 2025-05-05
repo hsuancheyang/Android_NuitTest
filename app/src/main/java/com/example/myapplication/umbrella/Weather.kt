@@ -1,4 +1,4 @@
-package com.example.myapplication.umgrella
+package com.example.myapplication.umbrella
 
 class Weather: IWeather {
     override fun isSunny(): Boolean{

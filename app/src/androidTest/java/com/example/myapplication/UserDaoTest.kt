@@ -14,7 +14,6 @@ import org.junit.BeforeClass
 import org.junit.Test
 
 
-
 class UserDaoTest {
     companion object {
         private lateinit var db: AppDatabase
@@ -37,15 +36,12 @@ class UserDaoTest {
     }
 
     @Before
-    fun clear()=runBlocking {
-        userDao.deleteAll()
-    }
+    fun clear() = runBlocking { userDao.deleteAll() }
 
     @Test
     fun insert() = runBlocking {
         val user = User(name = "Allen", email = "allen@mail.com")
         userDao.insert(user)
-
         val users = userDao.getUsers()
         Assert.assertEquals(1, users.size)
 
@@ -76,9 +72,11 @@ class UserDaoTest {
         val user1 = User(name = "Allen", email = "allen@mail.com")
         userDao.insert(user1)
         val insertUser = userDao.getUsers().first()
-        val updateUser = User(id=insertUser.id,
+        val updateUser = User(
+            id = insertUser.id,
             name = "Alice",
-            email = "alice@mail.com")
+            email = "alice@mail.com"
+        )
         userDao.update(updateUser)
 
         val retrievedUser = userDao.getUserById(insertUser.id)
@@ -86,6 +84,4 @@ class UserDaoTest {
         Assert.assertEquals("Alice", retrievedUser?.name)
         Assert.assertEquals("alice@mail.com", retrievedUser?.email)
     }
-
-
 }

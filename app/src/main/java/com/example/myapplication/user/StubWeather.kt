@@ -1,6 +1,6 @@
 package com.example.myapplication.user
 
-import com.example.myapplication.umgrella.IWeather
+import com.example.myapplication.umbrella.IWeather
 
 class StubWeather: IWeather
 {
